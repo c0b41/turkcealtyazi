@@ -1,0 +1,30 @@
+{
+  "name": "turkcealtyazi",
+  "version": "0.0.1",
+  "description": "turkcealtyazi.org çakma api",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cobaimelan/turkcealtyazi.git"
+  },
+  "keywords": [
+    "sublite",
+    "api"
+  ],
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "seven": "0.0.2"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ],
+  "bugs": {
+    "url": "https://github.com/cobaimelan/turkcealtyazi/issues"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Ayhan Kuru <ayhankuru@yandex.com.tr>",
+  "devDependencies": {},
+  "homepage": "https://github.com/cobaimelan/turkcealtyazi"
+}
