@@ -22,9 +22,12 @@
     "url": "https://github.com/cobaimelan/turkcealtyazi/issues"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "mocha test.js --reporter spec --timeout 15000"
   },
   "author": "Ayhan Kuru <ayhankuru@yandex.com.tr>",
-  "devDependencies": {},
+  "devDependencies": {
+    "expect.js": "~0.3.1",
+    "mocha": "~2.1.0"
+  },
   "homepage": "https://github.com/cobaimelan/turkcealtyazi"
 }

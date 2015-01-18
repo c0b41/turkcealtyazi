@@ -1,7 +1,17 @@
+[![Build Status](http://img.shields.io/travis/ayhankuru/turkcealtyazi.svg?style=flat-square)](https://travis-ci.org/ayhankuru/turkcealtyazi)
+
+
+[![Build Status](https://img.shields.io/david/ayhankuru/turkcealtyazi.svg?style=flat-square)](https://david-dm.org/ayhankuru/turkcealtyazi)
+
+
+
+
+
 # turkcealtyazi
 
-Turkçealtayazı.org sitesindeki eklenmiş yazıları listelemeye yarayan modul.
+turkcealtyazi.org sitesindeki eklenmiş yazıları listelemeye yarayan modul.
 
+### yeniden yazılması gerekiyor..
 #Kurulum
 ```Bash
 npm install turkcealtyazi
