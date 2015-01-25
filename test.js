@@ -3,20 +3,22 @@ var expect = require('expect.js');
 
 
 describe('Turkcealtyazi test', function() {
-	it('Test1', function(done) {
-		   turkcealtyazi('sadas',function(err,data){
-			expect(data).to.be(null)
-			done();
-			});
-	});
+	it('Test :1', function (done) {
 
-	it('Test2', function(done) {
-		   turkcealtyazi('2265398',function(err,data){
-			expect(err).to.not.exist;
-			expect(data).to.be.an('object');
-			expect(data.length).to.be(5)
-			done();
+		turkcealtyazi('2265398').then(function(data){ 
+				expect(data).to.be.an('object'); 
+				expect(data.length).to.be(6)
+				expect(data[0].title).to.eql('Drinking Buddies');	
+				expect(data[0].translator).to.eql('DVDRip');
+				expect(data[0].lang).to.eql('tr');
+				done(); 
+
+			},function(err){
+				console.log(err);
+				expect(err).to.exist;
+				done();
 			});
+
 	});
 });
 
@@ -24,4 +26,5 @@ describe('Turkcealtyazi test', function() {
 
 		  
 		
+
 

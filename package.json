@@ -1,11 +1,11 @@
 {
   "name": "turkcealtyazi",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "turkcealtyazi.org çakma api",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cobaimelan/turkcealtyazi.git"
+    "url": "git@github.com:ayhankuru/turkcealtyazi.git"
   },
   "keywords": [
     "sublite",
@@ -13,13 +13,12 @@
   ],
   "license": "BSD-2-Clause",
   "dependencies": {
-    "seven": "0.0.2"
+    "bluebird": "~2.9.1",
+    "request-promise": "~0.3.3",
+    "cheerio": "~0.18.0"
   },
-  "engines": [
-    "node >= 0.8.0"
-  ],
   "bugs": {
-    "url": "https://github.com/cobaimelan/turkcealtyazi/issues"
+    "url": "https://github.com/ayhankuru/turkcealtyazi/issues"
   },
   "scripts": {
     "test": "mocha test.js --reporter spec --timeout 15000"
@@ -29,5 +28,5 @@
     "expect.js": "~0.3.1",
     "mocha": "~2.1.0"
   },
-  "homepage": "https://github.com/cobaimelan/turkcealtyazi"
+  "homepage": "https://github.com/ayhankuru/turkcealtyazi"
 }

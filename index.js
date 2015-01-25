@@ -1,28 +1,45 @@
-var seven =require('seven');
+var Promise = require('bluebird');
+var cheerio = require('cheerio');
+var rq 		= require('request-promise');
+var url     ='http://www.turkcealtyazi.org';
 
-function turkcealtyazi(id,fn){
-var go = new seven();
 
-	go.play('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub',function(err,data){
-		if(err){
-			fn(err,null)
-		}else{
-			var block =go.matchall(data,'<div>','</div>');
-			if(block !==null){
-				if(block.length > 3){
-				var _data=[];
-				for (var i = 1; i < block.length-3; i++) {
-					_data.push({title:block[i].clear(),href:"http://www.turkcealtyazi.org"+go.attr(block[i],'href'),desc:go.attr(block[i],'title')[0].clear()});
-				};
-					fn(null,_data);
-				}else{
-					fn(null,null);
-				}
-			}
-		}
+function turkcealtyazi(id){
+
+	return new Promise(function (resolve, reject) {
+		
+		rq('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
+				var  $ = cheerio.load(data,{decodeEntities:false});
+				var $block =cheerio.load($('.nblock').eq(8).html(),{decodeEntities:false});
+				
+				var list = [];
+
+				$block('.altsonsez2').each(function(i, elem) {
+					var chunk = cheerio.load($block(this).html());
+					list.push({
+							title :chunk('.fl').text().trim(),
+							href:url+chunk('a').eq(0).attr('href'),
+							translator:chunk('.alcevirmen').text(),
+							release:chunk('.alrelease').text().trim(),
+							uploader:chunk('.algonderen').text(),
+							lang:chunk('.aldil').children('span').attr('class').replace('flag','')
+
+						})
+
+				});
+
+				resolve(list);
+
+		}).catch(function(err){
+			reject(err);
+		});
+
+
 	});
+
+
 }
 
 
-
-module.exports = exports =turkcealtyazi;
+ 
+module.exports = exports =turkcealtyazi; 

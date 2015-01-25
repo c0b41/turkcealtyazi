@@ -10,8 +10,7 @@
 # turkcealtyazi
 
 turkcealtyazi.org sitesindeki eklenmiş yazıları listelemeye yarayan modul.
-
-### yeniden yazılması gerekiyor..
+ 
 #Kurulum
 ```Bash
 npm install turkcealtyazi
@@ -25,10 +24,11 @@ var turkcealtyazi = require('turkcealtyazi');
 
 ```js
     // imdb id'si ile ulaşılabiliyor.. yada Turkçealtayazı.org sitesindeki id ile
-    turkcealtyazi('tt0434409',function(err,data){
-           if(err) throw err
-           else console.log(data) // Yazı bulunmadığı takdirde null değeri döner..
-   });
+    turkcealtyazi('1731998').then(function(data){
+			console.log(data);
+	}).catch(function(err){
+		console.log(err);
+	}) 
 ```
 
 
