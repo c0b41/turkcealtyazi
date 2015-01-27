@@ -5,6 +5,7 @@ var expect = require('expect.js');
 describe('Turkcealtyazi test', function() {
 	it('Test :1', function (done) {
 
+
 		turkcealtyazi('2265398').then(function(data){ 
 				expect(data).to.be.an('object'); 
 				expect(data.length).to.be(6)
