@@ -1,6 +1,6 @@
 {
   "name": "turkcealtyazi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "turkcealtyazi.org çakma api",
   "main": "index.js",
   "repository": {
@@ -14,7 +14,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "bluebird": "~2.9.1",
-    "request-promise": "~0.3.3",
+    "request-promise": "~0.4.0",
     "cheerio": "~0.18.0"
   },
   "bugs": {
