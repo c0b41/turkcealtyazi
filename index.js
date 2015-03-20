@@ -10,7 +10,7 @@ function turkcealtyazi(id){
 		
 		rq('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
 				var  $ = cheerio.load(data,{decodeEntities:false});
-				var $block =cheerio.load($('.nblock').eq(8).html(),{decodeEntities:false});
+				var $block =cheerio.load($('.nblock').eq(7).html(),{decodeEntities:false});
 				
 				var list = [];
 
@@ -24,8 +24,7 @@ function turkcealtyazi(id){
 							uploader:chunk('.algonderen').text(),
 							lang:chunk('.aldil').children('span').attr('class').replace('flag','')
 
-						})
-
+						}) 
 				});
 
 				resolve(list);
