@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
 var cheerio = require('cheerio');
-var rq 		= require('request-promise');
+var got     = require('got-promise').promise;
 var url     ='http://www.turkcealtyazi.org';
 
 
@@ -8,14 +8,24 @@ function turkcealtyazi(id){
 
 	return new Promise(function (resolve, reject) {
 		
-		rq('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
-				var  $ = cheerio.load(data,{decodeEntities:false});
-				var $block =cheerio.load($('.nblock').eq(7).html(),{decodeEntities:false});
-				
+		got('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
+				var  $ = cheerio.load(data.body,{decodeEntities:false});
+				var eqs =[5,6,7];
+				var select;
+				for (var i =0; i < eqs.length; i++) {
+					if($('.nblock').eq(eqs[i]).children().length > 2){
+						select=eqs[i];
+					}
+				};
+
 				var list = [];
 
-				$block('.altsonsez2').each(function(i, elem) {
-					var chunk = cheerio.load($block(this).html());
+				var $chunk =cheerio.load($('.nblock').eq(select).html(),{decodeEntities:false});
+
+				
+
+				$chunk('.row-class2').each(function(i, elem) {
+					var chunk = cheerio.load($chunk(this).html());
 					list.push({
 							title :chunk('.fl').text().trim(),
 							href:url+chunk('a').eq(0).attr('href'),
@@ -27,6 +37,7 @@ function turkcealtyazi(id){
 						}) 
 				});
 
+ 		
 				resolve(list);
 
 		}).catch(function(err){
@@ -40,5 +51,24 @@ function turkcealtyazi(id){
 }
 
 
+function download(href){
+  return new Promise(function (resolve, reject) {
+
+  	got(href).then(function(data){
+  		var  $ = cheerio.load(data.body,{decodeEntities:false});
+  	    var url =$('input[name="adres"]').val();
+  	    	url ="http://www.turkcealtyazi.org/subs/down1/"+url;
+  			resolve(url);
+
+  	}).catch(function(err){
+  			reject(err);
+  	})
+  	
+  });
+}
+
+
+
  
-module.exports = exports =turkcealtyazi; 
+exports.query =turkcealtyazi; 
+exports.download =download; 

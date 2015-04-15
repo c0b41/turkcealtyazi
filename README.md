@@ -19,9 +19,11 @@ npm install turkcealtyazi
 var turkcealtyazi = require('turkcealtyazi');
 ```
 
+##Arama
+
 ```js
     // imdb id'si ile ulaşılabiliyor.. yada Turkçealtayazı.org sitesindeki id ile
-    turkcealtyazi('1731998').then(function(data){
+    turkcealtyazi.query('1731998').then(function(data){
 			console.log(data);
 	}).catch(function(err){
 		console.log(err);
@@ -29,4 +31,15 @@ var turkcealtyazi = require('turkcealtyazi');
 ```
 
 
+
+
+##İndirme
+
+```js
+turkcealtyazi.download("http://www.turkcealtyazi.org/sub/526505/silicon-valley.html")
+.then(function(url){
+	console.log(url)
+});
+
+```
 
