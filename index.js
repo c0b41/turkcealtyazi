@@ -24,7 +24,7 @@ function turkcealtyazi(id){
 
 				
 
-				$chunk('.row-class2').each(function(i, elem) {
+				$chunk('.row-class2,.row-class1').each(function(i, elem) {
 					var chunk = cheerio.load($chunk(this).html());
 					list.push({
 							title :chunk('.fl').text().trim(),

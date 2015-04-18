@@ -1,6 +1,6 @@
 {
   "name": "turkcealtyazi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "turkcealtyazi.org çakma api",
   "main": "index.js",
   "bin": {
