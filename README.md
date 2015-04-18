@@ -43,3 +43,18 @@ turkcealtyazi.download("http://www.turkcealtyazi.org/sub/526505/silicon-valley.h
 
 ```
 
+##Komut Satırı 
+
+```
+$ npm install -g turkcealtyazi 
+```
+
+##Kullanım
+
+```
+$ turkcealtyazi -t "dizi" -n "game of thrones"
+
+$ turkcealtyazi --type "dizi" --name "game of thrones"
+
+```
+
