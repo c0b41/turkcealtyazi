@@ -1,8 +1,6 @@
 var turkcealtyazi = require('./index.js');
 
-turkcealtyazi.query('tt0137523').then(function(data){ 
-				console.log(data);
-				
-				
-
-			});
+turkcealtyazi.query('0944947').then(function(data){ 
+	console.log(data);
+	console.log(data.length);
+});
