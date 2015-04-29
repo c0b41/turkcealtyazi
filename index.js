@@ -9,18 +9,12 @@ function turkcealtyazi(id){
 	return new Promise(function (resolve, reject) {
 		
 		got('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
+				
 				var  $ = cheerio.load(data.body,{decodeEntities:false});
-				var eqs =[5,6,7];
-				var select;
-				for (var i =0; i < eqs.length; i++) {
-					if($('.nblock').eq(eqs[i]).children().length > 2){
-						select=eqs[i];
-					}
-				};
 
 				var list = [];
 
-				var $chunk =cheerio.load($('.nblock').eq(select).html(),{decodeEntities:false});
+				var $chunk =cheerio.load($('#altyazilar').html(),{decodeEntities:false});
 
 				
 
