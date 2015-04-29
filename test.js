@@ -44,7 +44,7 @@ describe('Turkcealtyazi test', function() {
 				return turkcealtyazi.query('0944947').then(function(data){ 
 
 						expect(data).to.be.an('object');
-						expect(data.length).to.be(66);
+						expect(data.length).to.be(76);
 						expect(data[0].title).to.eql('Game of Thrones');	
 						expect(data[0].translator).to.eql('eşekherif');
 						expect(data[0].lang).to.eql('tr');
