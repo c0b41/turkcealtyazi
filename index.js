@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
 var cheerio = require('cheerio');
-var got     = require('got-promise').promise;
+var got     = require('got-promise');
 var url     ='http://www.turkcealtyazi.org';
 
 

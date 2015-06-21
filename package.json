@@ -1,6 +1,6 @@
 {
   "name": "turkcealtyazi",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "turkcealtyazi.org çakma api",
   "main": "index.js",
   "bin": {
@@ -14,11 +14,11 @@
     "sublite",
     "api"
   ],
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.24",
     "cheerio": "^0.19.0",
-    "got-promise": "^2.0.0",
+    "got-promise": "^4.1.0",
     "minimist": "^1.1.1",
     "omdb-api": "^0.1.0",
     "underscore": "^1.8.3"
