@@ -27,7 +27,7 @@
     "url": "https://github.com/ayhankuru/turkcealtyazi/issues"
   },
   "scripts": {
-    "test": "iojs node_modules/mocha/bin/mocha test.js --reporter spec --timeout 15000"
+    "test": "mocha --harmony test.js --reporter spec --timeout 15000"
   },
   "author": "Ayhan Kuru <ayhankuru@yandex.com.tr>",
   "devDependencies": {
