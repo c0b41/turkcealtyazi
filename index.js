@@ -1,68 +1,74 @@
-var Promise = require('bluebird');
+
+/**!
+ * Turkcealtyazi
+ * @author Ayhankuru   <cobaimelan@protonmail.ch>
+ * @license MIT
+ */
+
+
 var cheerio = require('cheerio');
-var got     = require('got-promise');
-var url     ='http://www.turkcealtyazi.org';
+var got     = require('got');
+var util    = require('util');
+var WebUrl  = 'http://www.turkcealtyazi.org';
 
 
-function turkcealtyazi(id){
+/**
+* @method query
+* @desc turkcealtyazi query method
+* @param {string} id - imdb id or turkcealtyazi.org id - 0944947
+* @returns {function} promise
+*/
+function query(id){
 
-	return new Promise(function (resolve, reject) {
-		
-		got('http://www.turkcealtyazi.org/find.php?find='+id+'&cat=sub').then(function(data){
-				
-				var  $ = cheerio.load(data.body,{decodeEntities:false});
+		return got(util.format('%s/find.php?find=%s&cat=sub',WebUrl,id))
+		.then(function(data){
+
+			var $ = cheerio.load(data.body,{decodeEntities:false});
 
 				var list = [];
 
 				var $chunk =cheerio.load($('#altyazilar').html(),{decodeEntities:false});
 
-				
-
 				$chunk('.row-class2,.row-class1').each(function(i, elem) {
-					var chunk = cheerio.load($chunk(this).html());
-					list.push({
+				  var chunk = cheerio.load($chunk(this).html());
+				    list.push({
 							title :chunk('.fl').text().trim(),
-							href:url+chunk('a').eq(0).attr('href'),
-							translator:chunk('.alcevirmen').text(),
-							release:chunk('.alrelease').text().trim(),
+							href: util.format('%s%s',WebUrl,chunk('a').eq(0).attr('href')),
+			      	translator:chunk('.alcevirmen').text(),
+			      	release:chunk('.alrelease').text().trim(),
 							uploader:chunk('.algonderen').text(),
-							lang:chunk('.aldil').children('span').attr('class').replace('flag','')
-
-						}) 
+			      	lang:chunk('.aldil').children('span').attr('class').replace('flag','')
+						});
 				});
 
- 		
-				resolve(list);
 
-		}).catch(function(err){
-			reject(err);
+				return list;
+
 		});
-
-
-	});
-
-
 }
 
 
+ /**
+ * @method download
+ * @desc turkcealtyazi download method
+ * @param {string} href - turkcealtyazi.org subtitle url
+ * @returns {function} promise
+ */
 function download(href){
-  return new Promise(function (resolve, reject) {
 
-  	got(href).then(function(data){
-  		var  $ = cheerio.load(data.body,{decodeEntities:false});
-  	    var url =$('input[name="adres"]').val();
-  	    	url ="http://www.turkcealtyazi.org/subs/down1/"+url;
-  			resolve(url);
+  	return got(href).then(function(data){
 
-  	}).catch(function(err){
-  			reject(err);
-  	})
-  	
-  });
+			var  $ = cheerio.load(data.body,{decodeEntities:false});
+  	  var downurl =$('input[name="adres"]').val();
+
+			if(typeof downurl == 'undefined') return null;
+ 			return util.format('%s/%s%s',WebUrl,"subs/down1/",downurl);
+
+  	});
 }
 
 
 
- 
-exports.query =turkcealtyazi; 
-exports.download =download; 
+
+exports.query = query;
+exports.download = download;

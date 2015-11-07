@@ -1,6 +1,6 @@
 {
   "name": "turkcealtyazi",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "turkcealtyazi.org çakma api",
   "main": "index.js",
   "bin": {
@@ -16,10 +16,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.9.24",
     "cheerio": "^0.19.0",
-    "got-promise": "^4.1.0",
-    "minimist": "^1.1.1",
+    "got": "^5.1.0",
+    "minimist": "^1.2.0",
     "omdb-api": "^0.1.0",
     "underscore": "^1.8.3"
   },
@@ -27,12 +26,13 @@
     "url": "https://github.com/ayhankuru/turkcealtyazi/issues"
   },
   "scripts": {
-    "test": "mocha --harmony test.js --reporter spec --timeout 15000"
+    "test": "mocha --harmony test.js --reporter spec --timeout 15000 --require mocha-clean"
   },
   "author": "Ayhan Kuru <ayhankuru@yandex.com.tr>",
   "devDependencies": {
-    "expect.js": "~0.3.1",
-    "mocha": "^2.2.1"
+    "expect.js": "^0.3.1",
+    "mocha": "^2.3.3",
+    "mocha-clean": "^0.4.0"
   },
   "homepage": "https://github.com/ayhankuru/turkcealtyazi"
 }
